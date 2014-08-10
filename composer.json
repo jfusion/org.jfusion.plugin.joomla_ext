@@ -1,0 +1,20 @@
+{
+    "name": "jfusion/plugin-joomla_ext",
+    "type": "jfusion-plugin-joomla_ext",
+    "description": "Plugin for joomla_ext jfusion framework",
+    "keywords": ["jfusion", "plugin", "joomla_ext", "framework"],
+    "homepage": "https://github.com/jfusion/org.jfusion.plugin.joomla_ext",
+    "license": "GPL-2.0+",
+    "require": {
+        "php": ">=5.3.10"
+    },
+    "require-dev": {
+        "jfusion/framework": "~1",
+        "jfusion/platform-joomla": "~1"
+    },
+    "autoload": {
+        "psr-4": {
+            "JFusion\\Plugins\\joomla_ext\\": "."
+        }
+    }
+}
