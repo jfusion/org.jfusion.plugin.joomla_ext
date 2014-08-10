@@ -1,8 +1,8 @@
 {
-    "name": "jfusion/plugin-joomla_ext",
-    "type": "jfusion-plugin-joomla_ext",
-    "description": "Plugin for joomla_ext jfusion framework",
-    "keywords": ["jfusion", "plugin", "joomla_ext", "framework"],
+    "name": "jfusion/plugin-joomla-ext",
+    "type": "jfusion-plugin-joomla-ext",
+    "description": "Plugin for joomla-ext jfusion framework",
+    "keywords": ["jfusion", "plugin", "joomla-ext", "framework"],
     "homepage": "https://github.com/jfusion/org.jfusion.plugin.joomla_ext",
     "license": "GPL-2.0+",
     "require": {
