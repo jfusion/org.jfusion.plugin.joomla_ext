@@ -1,10 +1,18 @@
 {
     "name": "jfusion/plugin-joomla-ext",
-    "type": "jfusion-plugin-joomla-ext",
+    "type": "jfusion-plugin",
     "description": "Plugin for joomla-ext jfusion framework",
-    "keywords": ["jfusion", "plugin", "joomla-ext", "framework"],
-    "homepage": "https://github.com/jfusion/org.jfusion.plugin.joomla_ext",
+    "keywords": ["jfusion", "plugin", "joomla_ext"],
+    "homepage": "http://jfusion.org",
     "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Morten Hundevad",
+            "email": "fannoj@gmail.com",
+            "homepage": "http://fanno.dk",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=5.3.10"
     },
