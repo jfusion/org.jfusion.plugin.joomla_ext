@@ -10,6 +10,7 @@
  * @link       http://www.jfusion.org
  */
 
+use JFusion\Framework;
 use JFusion\Plugin\Plugin;
 
 use \JCrypt;
@@ -390,7 +391,7 @@ class Helper extends Plugin
 				}
 				if ($pass && !defined('PASSWORD_DEFAULT')) {
 					// Always make sure that the password hashing API has been defined.
-					require_once JFUSION_PLUGIN_PATH . DIRECTORY_SEPARATOR . $this->getJname() . DIRECTORY_SEPARATOR . 'password.php';
+					require_once Framework::getPluginPath($this->getName()) . '/password.php';
 				}
 			} else {
 				$pass = false;

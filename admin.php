@@ -176,7 +176,7 @@ class Admin extends \JFusion\Plugin\Admin
 	{
 		$configfile = $softwarePath . 'configuration.php';
 		//joomla 1.6+ test
-		$test_version_file = $softwarePath . 'includes' . DIRECTORY_SEPARATOR . 'version.php';
+		$test_version_file = $softwarePath . 'includes/version.php';
 
 		$params = array();
 		$lines = $this->readFile($configfile);
