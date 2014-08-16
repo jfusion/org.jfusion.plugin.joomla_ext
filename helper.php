@@ -391,7 +391,7 @@ class Helper extends Plugin
 				}
 				if ($pass && !defined('PASSWORD_DEFAULT')) {
 					// Always make sure that the password hashing API has been defined.
-					require_once Framework::getPluginPath($this->getName()) . '/password.php';
+					require_once __DIR__ . '/password.php';
 				}
 			} else {
 				$pass = false;
