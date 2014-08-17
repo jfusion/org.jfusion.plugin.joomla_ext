@@ -14,8 +14,9 @@ use JFusion\Plugin\Platform\Joomla;
 use JFusion\Plugins\joomla_ext\Helper;
 use JFusion\User\Userinfo;
 
+use Joomla\Language\Text;
+
 use JRoute;
-use JText;
 
 use Exception;
 
@@ -234,7 +235,7 @@ class Platform extends Joomla
 
 			$user->updateUserLanguage($userinfo, $existinguser);
 		} else {
-			$this->debugger->addDebug(JText::_('NO_USER_DATA_FOUND'));
+			$this->debugger->addDebug(Text::_('NO_USER_DATA_FOUND'));
 		}
 	}
 }

@@ -10,7 +10,6 @@
  * @link       http://www.jfusion.org
  */
 
-use JFusion\Framework;
 use JFusion\Plugin\Plugin;
 
 use \JCrypt;
