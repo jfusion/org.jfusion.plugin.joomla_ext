@@ -24,7 +24,6 @@ use \Exception;
 use \stdClass;
 
 //require the standard joomla user functions
-jimport('joomla.user.helper');
 /**
  * JFusion User Class for an external Joomla database
  * For detailed descriptions on these functions please check User
@@ -432,32 +431,29 @@ class User extends \JFusion\Plugin\User
 	 * @param Userinfo &$existinguser Object containing the old userinfo
 	 *
 	 * @throws Exception
+	 *
 	 * @return string updates are passed on into the $status array
 	 */
 	public function updatePassword(Userinfo $userinfo, Userinfo &$existinguser)
 	{
-		if (strlen($userinfo->password_clear) > 55) {
-			throw new Exception(Text::_('JLIB_USER_ERROR_PASSWORD_TOO_LONG'));
-		} else {
-			/**
-			 * @ignore
-			 * @var $auth Auth
-			 */
-			$auth = Factory::getAuth($this->getJname());
-			$password = $auth->hashPassword($userinfo);
+		/**
+		 * @ignore
+		 * @var $auth Auth
+		 */
+		$auth = Factory::getAuth($this->getJname());
+		$password = $auth->hashPassword($userinfo);
 
-			$db = Factory::getDatabase($this->getJname());
+		$db = Factory::getDatabase($this->getJname());
 
-			$query = $db->getQuery(true)
-				->update('#__users')
-				->set('password = ' . $db->quote($password))
-				->where('id = ' . $db->quote($existinguser->userid));
+		$query = $db->getQuery(true)
+			->update('#__users')
+			->set('password = ' . $db->quote($password))
+			->where('id = ' . $db->quote($existinguser->userid));
 
-			$db->setQuery($query);
-			$db->execute();
+		$db->setQuery($query);
+		$db->execute();
 
-			$this->debugger->addDebug(Text::_('PASSWORD_UPDATE')  . ': ' . substr($password, 0, 6) . '********');
-		}
+		$this->debugger->addDebug(Text::_('PASSWORD_UPDATE')  . ': ' . substr($password, 0, 6) . '********');
 	}
 
 	/**

@@ -13,8 +13,7 @@
 use JFusion\Factory;
 use JFusion\User\Userinfo;
 
-use \PasswordHash;
-use \JCrypt;
+use Hautelook\Phpass\PasswordHash;
 
 /**
  * JFusion Auth Class for an external Joomla database
@@ -44,7 +43,7 @@ class Auth extends \JFusion\Plugin\Auth
 	 */
 	public function generateEncryptedPassword(Userinfo $userinfo)
 	{
-		if (jimport('phpass.passwordhash')) {
+		if ($this->helper->hasFile('libraries/phpass/PasswordHash.php')) {
 			$testcrypt = $this->helper->hashPassword($userinfo);
 		} else {
 			$testcrypt = $this->helper->getCryptedPassword($userinfo->password_clear, $userinfo->password_salt, 'md5-hex');
@@ -71,7 +70,7 @@ class Auth extends \JFusion\Plugin\Auth
 			$match = $phpass->CheckPassword($userinfo->password_clear, $userinfo->password);
 		} elseif ($userinfo->password[0] == '$') {
 			// JCrypt::hasStrongPasswordSupport() includes a fallback for us in the worst case
-			JCrypt::hasStrongPasswordSupport();
+			$this->helper->hasStrongPasswordSupport();
 			$match = password_verify($userinfo->password_clear, $userinfo->password);
 
 			// Uncomment this line if we actually move to bcrypt.
@@ -115,7 +114,7 @@ class Auth extends \JFusion\Plugin\Auth
 	 */
 	public function hashPassword(Userinfo $userinfo)
 	{
-		if (jimport('phpass.passwordhash')) {
+		if ($this->helper->hasFile('libraries/phpass/PasswordHash.php')) {
 			$password = $this->helper->hashPassword($userinfo->password_clear);
 		} else {
 			$salt = $this->helper->genRandomPassword(32);

@@ -10,10 +10,9 @@
  * @link       http://www.jfusion.org
  */
 
+use Hautelook\Phpass\PasswordHash;
+use JFusion\Framework;
 use JFusion\Plugin\Plugin;
-
-use \JCrypt;
-use \PasswordHash;
 
 /**
  * JFusion Helper Class for joomla_ext
@@ -196,7 +195,7 @@ class Helper extends Plugin
 				}
 				else
 				{
-					return '$1$' . substr(md5(JCrypt::genRandomBytes()), 0, 8) . '$';
+					return '$1$' . substr(md5(Framework::genRandomBytes()), 0, 8) . '$';
 				}
 				break;
 
@@ -207,7 +206,7 @@ class Helper extends Plugin
 				}
 				else
 				{
-					return '$2$' . substr(md5(JCrypt::genRandomBytes()), 0, 12) . '$';
+					return '$2$' . substr(md5(Framework::genRandomBytes()), 0, 12) . '$';
 				}
 				break;
 
@@ -218,7 +217,7 @@ class Helper extends Plugin
 				}
 				else
 				{
-					return mhash_keygen_s2k(MHASH_SHA1, $plaintext, substr(pack('h*', md5(JCrypt::genRandomBytes())), 0, 8), 4);
+					return mhash_keygen_s2k(MHASH_SHA1, $plaintext, substr(pack('h*', md5(Framework::genRandomBytes())), 0, 8), 4);
 				}
 				break;
 
@@ -229,7 +228,7 @@ class Helper extends Plugin
 				}
 				else
 				{
-					return mhash_keygen_s2k(MHASH_MD5, $plaintext, substr(pack('h*', md5(JCrypt::genRandomBytes())), 0, 8), 4);
+					return mhash_keygen_s2k(MHASH_MD5, $plaintext, substr(pack('h*', md5(Framework::genRandomBytes())), 0, 8), 4);
 				}
 				break;
 
@@ -288,7 +287,7 @@ class Helper extends Plugin
 		 * distribution is even, and randomize the start shift so it's not
 		 * predictable.
 		 */
-		$random = JCrypt::genRandomBytes($length + 1);
+		$random = Framework::genRandomBytes($length + 1);
 		$shift = ord($random[0]);
 
 		for ($i = 1; $i <= $length; ++$i)
@@ -397,5 +396,15 @@ class Helper extends Plugin
 			}
 		}
 		return $pass;
+	}
+
+	/**
+	 * @param $file
+	 *
+	 * @return bool
+	 */
+	public function hasFile($file) {
+		$source_path = $this->params->get('source_path');
+		return file_exists($source_path . $file);
 	}
 }
