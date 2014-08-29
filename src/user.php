@@ -79,11 +79,6 @@ class User extends \JFusion\Plugin\User
 					foreach ($groupList as $group) {
 						$result->groups[] = $group->group_id;
 						$result->groupnames[] = $group->name;
-
-						if ( !isset($result->group_id) || $group->group_id > $result->group_id) {
-							$result->group_id = $group->group_id;
-							$result->group_name =  $group->name;
-						}
 					}
 				} else {
 					$result->groups = array();
@@ -397,7 +392,7 @@ class User extends \JFusion\Plugin\User
 
 				$db->insertObject('#__user_usergroup_map', $temp);
 			}
-			$this->debugger->addDebug(Text::_('GROUP_UPDATE') . ': ' . implode(',', $existinguser->groups) . ' -> ' .implode(',', $usergroups));
+			$this->debugger->addDebug(Text::_('GROUP_UPDATE') . ': ' . implode(', ', $existinguser->groups) . ' -> ' . implode(', ', $usergroups));
 		}
 	}
 
