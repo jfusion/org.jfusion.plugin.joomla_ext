@@ -340,8 +340,7 @@ class User extends \JFusion\Plugin\User
      * @return array
      */
     function destroySession(Userinfo $userinfo, $options) {
-        $status = $this->curlLogout($userinfo, $options, $this->params->get('logout_type'));
-        return $status;
+	    return $this->curlLogout($userinfo, $options, $this->params->get('logout_type'));
     }
 
     /**
