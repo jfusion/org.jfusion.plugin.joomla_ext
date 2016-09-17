@@ -257,8 +257,6 @@ class User extends \JFusion\Plugin\User
 					$newgroup = new stdClass;
 					$newgroup->group_id = (int)$group;
 					$newgroup->user_id = (int)$user->id;
-					$newgroup->group_leader = 0;
-					$newgroup->user_pending = 0;
 
 					$db->insertObject('#__user_usergroup_map', $newgroup);
 				}
